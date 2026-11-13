@@ -1,0 +1,49 @@
+{
+  "prec_toxic": 0.6829268292682927,
+  "rec_toxic": 0.6363636363636364,
+  "f1_toxic": 0.6588235294117647,
+  "acc": 0.6704545454545454,
+  "macro_f1": 0.6700711053652231,
+  "tn": 62,
+  "fp": 26,
+  "fn": 32,
+  "tp": 56,
+  "predicted_toxic_share": 0.4659090909090909,
+  "model": "B1: TF-IDF + Logistic Regression",
+  "best_params": {
+    "C": 0.1,
+    "fit_intercept": true,
+    "penalty": "l2"
+  },
+  "n_features": 245,
+  "tokenizer": "deepcut",
+  "top5_inner_cv": [
+    [
+      "{'clf__C': 0.1, 'clf__fit_intercept': True, 'clf__penalty': 'l2'}",
+      0.597
+    ],
+    [
+      "{'clf__C': 1, 'clf__fit_intercept': False, 'clf__penalty': 'l1'}",
+      0.5964
+    ],
+    [
+      "{'clf__C': 1, 'clf__fit_intercept': True, 'clf__penalty': 'l2'}",
+      0.596
+    ],
+    [
+      "{'clf__C': 10, 'clf__fit_intercept': True, 'clf__penalty': 'l2'}",
+      0.5934
+    ],
+    [
+      "{'clf__C': 10, 'clf__fit_intercept': True, 'clf__penalty': 'l1'}",
+      0.5928
+    ]
+  ],
+  "seed": 42,
+  "scoring": "f1_macro",
+  "n_train": 1472,
+  "n_test": 176,
+  "python": "3.9.6",
+  "sklearn": "1.6.1",
+  "pandas": "2.3.3"
+}

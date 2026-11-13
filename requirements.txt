@@ -1,0 +1,7 @@
+# เวอร์ชันที่ใช้รันผล B1 จริง (Python 3.9.6, macOS)
+numpy==1.26.4
+pandas==2.3.3
+scikit-learn==1.6.1
+scipy==1.13.1
+pythainlp==5.4.0
+onnxruntime==1.19.2   # ใช้รัน Deepcut ผ่าน pythainlp
