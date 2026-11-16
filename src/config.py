@@ -27,3 +27,14 @@ INNER_FOLDS = 3            # CV ภายในชุดฝึก (ไม่แ�
 
 # ----- คอลัมน์มาตรฐานของไฟล์ผลลัพธ์ -----
 SPLIT_COLUMNS = ["tweet_id", "tweet_text", "toxic_votes", "nontoxic_votes", "is_toxic", "keyword"]
+
+# ----- M3: WangchanBERTa fine-tune -----
+M3_MODEL = "airesearch/wangchanberta-base-att-spm-uncased"
+M3_MAX_LEN = 128           # ทวีตยาวไม่เกิน ~142 ตัวอักษร => 128 subword token พอ (ไม่ถูกตัดทิ้ง)
+M3_BATCH = 16
+M3_LR_GRID = [2e-5, 3e-5, 5e-5]   # ค่ามาตรฐานของการ fine-tune BERT-family
+M3_MAX_EPOCHS = 5          # ตอนเลือกพารามิเตอร์ วัด dev ทุก epoch แล้วเลือก epoch ที่ดีสุด
+M3_WEIGHT_DECAY = 0.01
+M3_WARMUP = 0.1            # 10% แรกของ step ค่อย ๆ เพิ่ม learning rate
+M3_DEV_FRAC = 0.1          # แบ่ง 10% ของชุดฝึกเป็น dev ไว้เลือก lr/epoch เท่านั้น (ไม่แตะชุดทดสอบ)
+M3_SEEDS = [42, 43, 44, 45, 46]   # ฝึกซ้ำหลาย seed แล้วรายงาน mean ± SD (ชุดทดสอบเล็ก ผลแกว่งตาม seed)

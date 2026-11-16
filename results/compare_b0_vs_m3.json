@@ -1,0 +1,14 @@
+{
+  "a": "B0",
+  "b": "M3",
+  "both_right": 104,
+  "both_wrong": 12,
+  "only_a_right": 12,
+  "only_b_right": 48,
+  "mcnemar_exact_p": 3.183628737933597e-06,
+  "acc_diff_b_minus_a": 0.20454545454545456,
+  "acc_diff_ci95": [
+    0.125,
+    0.2840909090909091
+  ]
+}

@@ -1,0 +1,4 @@
+﻿pair,acc_diff,ci95_low,ci95_high,only_a_right,only_b_right,mcnemar_p,p_holm,significant
+B1 − B0,0.028,-0.023,0.08,9,14,0.4,0.4,no
+M3 − B0,0.205,0.125,0.284,12,48,3.2e-06,9.6e-06,yes
+M3 − B1,0.176,0.097,0.256,13,44,4.7e-05,9.4e-05,yes

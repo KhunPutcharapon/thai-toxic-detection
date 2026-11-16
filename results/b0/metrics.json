@@ -1,13 +1,13 @@
 {
-  "prec_toxic": 0.6666666666666666,
-  "rec_toxic": 0.5909090909090909,
-  "f1_toxic": 0.6265060240963856,
-  "acc": 0.6477272727272727,
-  "macro_f1": 0.6465863453815262,
-  "tn": 62,
-  "fp": 26,
-  "fn": 36,
-  "tp": 52,
+  "prec_toxic": 0.6794871794871795,
+  "rec_toxic": 0.6022727272727273,
+  "f1_toxic": 0.6385542168674698,
+  "acc": 0.6590909090909091,
+  "macro_f1": 0.6579867858530897,
+  "tn": 63,
+  "fp": 25,
+  "fn": 35,
+  "tp": 53,
   "predicted_toxic_share": 0.4431818181818182,
   "model": "B0: Bag-of-Words (CountVectorizer) + Logistic Regression",
   "best_params": {
@@ -20,23 +20,23 @@
   "top5_inner_cv": [
     [
       "{'clf__C': 0.1, 'clf__fit_intercept': True, 'clf__penalty': 'l2'}",
-      0.6156
-    ],
-    [
-      "{'clf__C': 1, 'clf__fit_intercept': True, 'clf__penalty': 'l1'}",
-      0.6082
-    ],
-    [
-      "{'clf__C': 1, 'clf__fit_intercept': True, 'clf__penalty': 'l2'}",
-      0.6047
+      0.6153
     ],
     [
       "{'clf__C': 0.01, 'clf__fit_intercept': True, 'clf__penalty': 'l2'}",
-      0.6044
+      0.6145
+    ],
+    [
+      "{'clf__C': 1, 'clf__fit_intercept': True, 'clf__penalty': 'l2'}",
+      0.6081
+    ],
+    [
+      "{'clf__C': 10, 'clf__fit_intercept': True, 'clf__penalty': 'l2'}",
+      0.6055
     ],
     [
       "{'clf__C': 10, 'clf__fit_intercept': True, 'clf__penalty': 'l1'}",
-      0.6006
+      0.6048
     ]
   ],
   "seed": 42,

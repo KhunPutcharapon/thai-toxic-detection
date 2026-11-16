@@ -1,0 +1,8 @@
+# ไลบรารีสำหรับ M3 — ลงใน venv แยก (venv_m3, Python >= 3.10) ไม่ใช่ venv_deepcut
+# วิธีลง: pip install numpy pandas scikit-learn scipy -r requirements_m3.txt
+# (ไม่ใช้ requirements.txt เพราะล็อกเวอร์ชันไว้สำหรับ Python 3.9; M3 ไม่ต้องใช้ pythainlp/Deepcut)
+# เวอร์ชันจริงที่รันถูกบันทึกใน results/m3/metrics.json (torch, transformers, cuda, gpu)
+torch
+transformers
+sentencepiece
+protobuf      # transformers รุ่นใหม่ต้องใช้แปลง tokenizer แบบ SentencePiece ของ WangchanBERTa

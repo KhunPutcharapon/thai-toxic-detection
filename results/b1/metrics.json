@@ -1,17 +1,17 @@
 {
-  "prec_toxic": 0.6829268292682927,
-  "rec_toxic": 0.6363636363636364,
-  "f1_toxic": 0.6588235294117647,
-  "acc": 0.6704545454545454,
-  "macro_f1": 0.6700711053652231,
-  "tn": 62,
-  "fp": 26,
-  "fn": 32,
-  "tp": 56,
-  "predicted_toxic_share": 0.4659090909090909,
+  "prec_toxic": 0.6896551724137931,
+  "rec_toxic": 0.6818181818181818,
+  "f1_toxic": 0.6857142857142857,
+  "acc": 0.6875,
+  "macro_f1": 0.6874899112187247,
+  "tn": 61,
+  "fp": 27,
+  "fn": 28,
+  "tp": 60,
+  "predicted_toxic_share": 0.4943181818181818,
   "model": "B1: TF-IDF + Logistic Regression",
   "best_params": {
-    "C": 0.1,
+    "C": 1,
     "fit_intercept": true,
     "penalty": "l2"
   },
@@ -19,24 +19,24 @@
   "tokenizer": "deepcut",
   "top5_inner_cv": [
     [
-      "{'clf__C': 0.1, 'clf__fit_intercept': True, 'clf__penalty': 'l2'}",
-      0.597
-    ],
-    [
-      "{'clf__C': 1, 'clf__fit_intercept': False, 'clf__penalty': 'l1'}",
-      0.5964
-    ],
-    [
       "{'clf__C': 1, 'clf__fit_intercept': True, 'clf__penalty': 'l2'}",
-      0.596
+      0.5969
     ],
     [
       "{'clf__C': 10, 'clf__fit_intercept': True, 'clf__penalty': 'l2'}",
-      0.5934
+      0.5962
     ],
     [
       "{'clf__C': 10, 'clf__fit_intercept': True, 'clf__penalty': 'l1'}",
-      0.5928
+      0.5943
+    ],
+    [
+      "{'clf__C': 0.1, 'clf__fit_intercept': True, 'clf__penalty': 'l2'}",
+      0.5936
+    ],
+    [
+      "{'clf__C': 1, 'clf__fit_intercept': False, 'clf__penalty': 'l1'}",
+      0.5904
     ]
   ],
   "seed": 42,

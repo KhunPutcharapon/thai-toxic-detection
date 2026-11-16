@@ -2,13 +2,13 @@
   "a": "B0",
   "b": "B1",
   "both_right": 107,
-  "both_wrong": 51,
-  "only_a_right": 7,
-  "only_b_right": 11,
-  "mcnemar_exact_p": 0.480682373046875,
-  "acc_diff_b_minus_a": 0.022727272727272728,
+  "both_wrong": 46,
+  "only_a_right": 9,
+  "only_b_right": 14,
+  "mcnemar_exact_p": 0.4048728942871094,
+  "acc_diff_b_minus_a": 0.028409090909090908,
   "acc_diff_ci95": [
     -0.022727272727272728,
-    0.06818181818181818
+    0.07954545454545454
   ]
 }

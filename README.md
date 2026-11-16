@@ -136,23 +136,28 @@ B0/B1 เลือกพารามิเตอร์ด้วย 3-fold CV ภ
 
 **ผลปัจจุบัน (ชุดทดสอบ 176 ทวีต)**
 
-| Metric | งานเดิม | B0 (นับคำ) | B1 (TF-IDF) | M3 |
-|---|---|---|---|---|
-| Precision (toxic) | 0.87 | 0.667 | 0.683 | – |
-| Recall (toxic) | 0.70 | 0.591 | 0.636 | – |
-| F1 (toxic) | 0.78 | 0.627 | 0.659 | – |
-| Accuracy | 0.80 | 0.648 | 0.670 | – |
-| macro-F1 | – | 0.647 | 0.670 | – |
-| FP (non-toxic ที่ถูกทายเป็น toxic) | – | 26 | 26 | – |
+| Metric | งานเดิม | B0 (นับคำ) | B1 (TF-IDF) | M3 seed 42 | M3 mean ± SD (5 seeds) |
+|---|---|---|---|---|---|
+| Precision (toxic) | 0.87 | 0.679 | 0.690 | 0.840 | 0.828 ± 0.017 |
+| Recall (toxic) | 0.70 | 0.602 | 0.682 | 0.898 | 0.875 ± 0.027 |
+| F1 (toxic) | 0.78 | 0.639 | 0.686 | 0.868 | 0.851 ± 0.015 |
+| Accuracy | 0.80 | 0.659 | 0.688 | 0.864 | 0.847 ± 0.014 |
+| macro-F1 | – | 0.658 | 0.687 | 0.863 | 0.846 ± 0.015 |
+| FP (non-toxic ที่ถูกทายเป็น toxic, จาก 88) | – | 25 | 27 | 15 | 16.0 ± 2.0 |
 
-B1 − B0: accuracy +0.023, McNemar p = 0.481, bootstrap 95% CI −0.023 ถึง +0.068 → ยังสรุปไม่ได้ว่าต่างกันจริง และ FP เท่ากัน (26) แปลว่า TF-IDF ไม่ได้ช่วยเรื่องคำหยาบที่ไม่ toxic
+- B1 − B0: accuracy +0.028, McNemar p = 0.405, bootstrap 95% CI −0.023 ถึง +0.080 → ยังสรุปไม่ได้ว่าต่างกันจริง; FP ไม่ลดลง (25 → 27) แปลว่า TF-IDF ไม่ได้ช่วยเรื่องคำหยาบที่ไม่ toxic
+- M3 − B1 (seed 42): accuracy +0.176, McNemar p < 0.001, bootstrap 95% CI +0.097 ถึง +0.256; ทุก seed (42–46) p < 0.01 และ CI ไม่คร่อม 0
+- FP rate บนทวีต non-toxic: B0 28% / B1 31% / M3 17% — FP ของ B1 27 ทวีต M3 ทายถูก 23 ทวีต แต่ M3 มี FP ใหม่ 11 ทวีต
+- M3: lr = 5e-5, 5 epochs (เลือกจาก dev 10%), batch 16, max_len 128; รันบน MacBook Pro M5 (MPS) ~3.6 นาที/seed
+- หมายเหตุ: ค่าที่เลือกอยู่ขอบ grid (lr สูงสุด, epoch สูงสุด) และ dev F1 ยังขึ้นอยู่ — อาจยังไม่ใช่ค่าที่ดีที่สุด
+- ผลทั้งหมดหลังแก้การย่อคำยืดให้ย่อเฉพาะตัวอักษรซ้ำ ≥ 3 ตัว (เดิมย่อซ้ำ 2 ตัวด้วยทำให้คำปกติอย่าง "คนนั้น" เพี้ยน)
 
 | ขั้นตอน | งาน | สถานะ |
 |---|---|---|
 | 1 | หัวข้อ, งานเดิม, gap, RQ, dataset protocol | ✅ เสร็จ |
 | 2 | B0 และ B1 | ✅ เสร็จ |
 | 3 | จัดโครงสร้างโค้ด + ใช้ split/seed ชุดเดียวกันทุกโมเดล | ✅ เสร็จ |
-| 4 | Fine-tune M3 (WangchanBERTa) | ⏳ ถัดไป |
+| 4 | Fine-tune M3 (WangchanBERTa) | ✅ เสร็จ |
 | 5 | เปรียบเทียบผล, error analysis, analysis เสริม | ⏳ ถัดไป |
 | 6 | Paper draft, mini conference, final package | ⏳ ถัดไป |
 
@@ -173,20 +178,24 @@ Code/
 ├── make_split.py          ขั้นที่ 1  สร้างชุดทดสอบ 176 ทวีต + ชุดฝึกสมดุล -> data/splits/
 ├── train_b0.py            ขั้นที่ 2  B0: นับคำ + LR (ทำซ้ำงานเดิม)       -> results/b0/
 ├── train_b1.py            ขั้นที่ 2  B1: TF-IDF + Logistic Regression     -> results/b1/
-├── train_m3.py            ขั้นที่ 3  M3: WangchanBERTa (ยังไม่ได้เขียน)     -> results/m3/
+├── train_m3.py            ขั้นที่ 3  M3: WangchanBERTa fine-tune (GPU)     -> results/m3/
+├── m3_colab.ipynb         โน้ตบุ๊กสำหรับรัน train_m3.py บน Google Colab
 ├── compare.py             ขั้นที่ 4  เทียบสองโมเดลทีละทวีต (McNemar + bootstrap)
+├── compare_all.py         ขั้นที่ 4  เทียบทุกโมเดลพร้อมกัน (B0/B1/M3) + Holm + รูปแบบการทายผิด
 ├── src/                   โค้ดที่ทุกสคริปต์ใช้ร่วมกัน
 │   ├── config.py          ค่าตั้งกลาง: path, seed, ขนาดชุดข้อมูล, เกณฑ์เลือกพารามิเตอร์
 │   ├── data.py            โหลดข้อมูลดิบ, สร้าง/อ่านชุดฝึก-ชุดทดสอบ
 │   ├── preprocess.py      ตัดคำ (Deepcut) และทำความสะอาดข้อความ (ใช้กับ B0/B1)
 │   ├── linear.py          pipeline + grid search ที่ B0 และ B1 ใช้ร่วมกัน (ต่างกันแค่ vectorizer)
+│   ├── transformer.py     M3: เตรียมข้อความสำหรับ WangchanBERTa, ฝึก/ทาย (PyTorch)
 │   └── evaluate.py        เมตริก, บันทึกผล, เปรียบเทียบแบบจับคู่
 ├── data/
 │   ├── raw/               thai_toxic_2160.csv, toxic_keywords.txt
 │   └── splits/            train_balanced.csv (1,472), test_176.csv (176)
 ├── results/               ผลของแต่ละโมเดล (สร้างตอนรัน)
 ├── legacy/                โค้ด b0.py / b1.py และผลเดิมก่อนจัดโครงสร้าง (เก็บไว้อ้างอิง)
-└── requirements.txt
+├── requirements.txt
+└── requirements_m3.txt   ไลบรารีเพิ่มสำหรับ M3 (torch, transformers, sentencepiece)
 ```
 
 <a id="c-run"></a>
@@ -203,7 +212,18 @@ python train_b0.py
 python train_b1.py
 python compare.py --a results/b0 --b results/b1
 python compare.py --a results/b1 --b results/m3    # หลังมีผล M3
+python compare_all.py                              # เทียบ B0/B1/M3 พร้อมกัน -> results/compare_all.json, compare_all_errors.csv
 ```
+
+**M3 (ต้องใช้ GPU):** เปิด `m3_colab.ipynb` บน Google Colab (T4) แล้วรันตามลำดับ หรือบนเครื่องที่มี GPU:
+
+```bash
+pip install -r requirements_m3.txt
+python train_m3.py --smoke   # ทดสอบว่าโค้ดรันได้ (~1–2 นาที, ผลไม่มีความหมาย)
+python train_m3.py           # เลือก lr/epoch จาก dev 10% -> refit บนชุดฝึกทั้งหมด 5 seeds -> results/m3/
+```
+
+`results/m3/` = ผลของ seed 42 (ใช้กับ `compare.py`) และ `metrics.json` มี `seed_summary` (mean ± SD ทุก seed); ผลแยกแต่ละ seed อยู่ใน `results/m3/seeds/`
 
 ทดสอบว่าโค้ดรันได้เร็ว ๆ โดยไม่ใช้ Deepcut: `A_SMOKE=1 python train_b1.py` (ตัวเลขผลไม่มีความหมาย)
 

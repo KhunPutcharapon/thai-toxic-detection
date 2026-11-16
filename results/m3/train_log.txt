@@ -1,0 +1,230 @@
+W1117 01:07:41.497000 35756 venv_m3/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+[ข้อมูล] ชุดฝึก 1472 ทวีต / ชุดทดสอบ 176 ทวีต
+[อุปกรณ์] mps
+[tokenizer] ตัวอย่าง: ['▁', 'จะไม่', 'ไปดู', 'เพราะ', 'ติ่ง', 'ปลวก', 'ๆ', 'นี่แหละ', 'ค่ะ', '<_>', '▁', 'หอย', 'หลอด', '<_>', '▁ต้อง']
+[tokenizer] ทวีตที่ยาวเกิน 128 token: ชุดฝึก 0 / ชุดทดสอบ 0
+[เลือกพารามิเตอร์] ฝึก 1324 / dev 148 ทวีต (ไม่แตะชุดทดสอบ)
+  lr=2e-05
+Loading weights:   0%|          | 0/197 [00:00<?, ?it/s]Loading weights: 100%|██████████| 197/197 [00:00<00:00, 15378.62it/s]
+[transformers] [1mCamembertForSequenceClassification LOAD REPORT[0m from: airesearch/wangchanberta-base-att-spm-uncased
+Key                         | Status     | 
+----------------------------+------------+-
+lm_head.layer_norm.weight   | UNEXPECTED | 
+roberta.pooler.dense.bias   | UNEXPECTED | 
+roberta.pooler.dense.weight | UNEXPECTED | 
+lm_head.bias                | UNEXPECTED | 
+lm_head.layer_norm.bias     | UNEXPECTED | 
+lm_head.dense.bias          | UNEXPECTED | 
+lm_head.dense.weight        | UNEXPECTED | 
+classifier.out_proj.bias    | MISSING    | 
+classifier.dense.weight     | MISSING    | 
+classifier.dense.bias       | MISSING    | 
+classifier.out_proj.weight  | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+    epoch=1  train_loss=0.6660  dev_macro_f1=0.6948
+    epoch=2  train_loss=0.5416  dev_macro_f1=0.6571
+    epoch=3  train_loss=0.5092  dev_macro_f1=0.6663
+    epoch=4  train_loss=0.4454  dev_macro_f1=0.7236
+    epoch=5  train_loss=0.4081  dev_macro_f1=0.7458
+  lr=3e-05
+Loading weights:   0%|          | 0/197 [00:00<?, ?it/s]Loading weights: 100%|██████████| 197/197 [00:00<00:00, 7362.82it/s]
+[transformers] [1mCamembertForSequenceClassification LOAD REPORT[0m from: airesearch/wangchanberta-base-att-spm-uncased
+Key                         | Status     | 
+----------------------------+------------+-
+lm_head.layer_norm.weight   | UNEXPECTED | 
+roberta.pooler.dense.bias   | UNEXPECTED | 
+roberta.pooler.dense.weight | UNEXPECTED | 
+lm_head.bias                | UNEXPECTED | 
+lm_head.layer_norm.bias     | UNEXPECTED | 
+lm_head.dense.bias          | UNEXPECTED | 
+lm_head.dense.weight        | UNEXPECTED | 
+classifier.out_proj.bias    | MISSING    | 
+classifier.dense.weight     | MISSING    | 
+classifier.dense.bias       | MISSING    | 
+classifier.out_proj.weight  | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+    epoch=1  train_loss=0.6191  dev_macro_f1=0.7832
+    epoch=2  train_loss=0.4402  dev_macro_f1=0.7556
+    epoch=3  train_loss=0.3650  dev_macro_f1=0.7898
+    epoch=4  train_loss=0.3001  dev_macro_f1=0.8038
+    epoch=5  train_loss=0.2426  dev_macro_f1=0.8036
+  lr=5e-05
+Loading weights:   0%|          | 0/197 [00:00<?, ?it/s]Loading weights: 100%|██████████| 197/197 [00:00<00:00, 8922.03it/s]
+[transformers] [1mCamembertForSequenceClassification LOAD REPORT[0m from: airesearch/wangchanberta-base-att-spm-uncased
+Key                         | Status     | 
+----------------------------+------------+-
+lm_head.layer_norm.weight   | UNEXPECTED | 
+roberta.pooler.dense.bias   | UNEXPECTED | 
+roberta.pooler.dense.weight | UNEXPECTED | 
+lm_head.bias                | UNEXPECTED | 
+lm_head.layer_norm.bias     | UNEXPECTED | 
+lm_head.dense.bias          | UNEXPECTED | 
+lm_head.dense.weight        | UNEXPECTED | 
+classifier.out_proj.bias    | MISSING    | 
+classifier.dense.weight     | MISSING    | 
+classifier.dense.bias       | MISSING    | 
+classifier.out_proj.weight  | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+    epoch=1  train_loss=0.5891  dev_macro_f1=0.7427
+    epoch=2  train_loss=0.4023  dev_macro_f1=0.7901
+    epoch=3  train_loss=0.2923  dev_macro_f1=0.8243
+    epoch=4  train_loss=0.1588  dev_macro_f1=0.8378
+    epoch=5  train_loss=0.1171  dev_macro_f1=0.8513
+[เลือกได้] lr=5e-05  epochs=5  (dev macro-F1 0.8513)
+[refit] seed=42  lr=5e-05  epochs=5  บนชุดฝึกทั้งหมด 1472 ทวีต
+Loading weights:   0%|          | 0/197 [00:00<?, ?it/s]Loading weights: 100%|██████████| 197/197 [00:00<00:00, 8740.07it/s]
+[transformers] [1mCamembertForSequenceClassification LOAD REPORT[0m from: airesearch/wangchanberta-base-att-spm-uncased
+Key                         | Status     | 
+----------------------------+------------+-
+lm_head.layer_norm.weight   | UNEXPECTED | 
+roberta.pooler.dense.bias   | UNEXPECTED | 
+roberta.pooler.dense.weight | UNEXPECTED | 
+lm_head.bias                | UNEXPECTED | 
+lm_head.layer_norm.bias     | UNEXPECTED | 
+lm_head.dense.bias          | UNEXPECTED | 
+lm_head.dense.weight        | UNEXPECTED | 
+classifier.out_proj.bias    | MISSING    | 
+classifier.dense.weight     | MISSING    | 
+classifier.dense.bias       | MISSING    | 
+classifier.out_proj.weight  | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+    epoch=1  train_loss=0.6398
+    epoch=2  train_loss=0.4461
+    epoch=3  train_loss=0.2811
+    epoch=4  train_loss=0.1472
+    epoch=5  train_loss=0.0885
+  macro-F1 0.863  acc 0.864  FP 15  FN 9  (216.4s)
+[refit] seed=43  lr=5e-05  epochs=5  บนชุดฝึกทั้งหมด 1472 ทวีต
+Loading weights:   0%|          | 0/197 [00:00<?, ?it/s]Loading weights: 100%|██████████| 197/197 [00:00<00:00, 7701.28it/s]
+[transformers] [1mCamembertForSequenceClassification LOAD REPORT[0m from: airesearch/wangchanberta-base-att-spm-uncased
+Key                         | Status     | 
+----------------------------+------------+-
+lm_head.layer_norm.weight   | UNEXPECTED | 
+roberta.pooler.dense.bias   | UNEXPECTED | 
+roberta.pooler.dense.weight | UNEXPECTED | 
+lm_head.bias                | UNEXPECTED | 
+lm_head.layer_norm.bias     | UNEXPECTED | 
+lm_head.dense.bias          | UNEXPECTED | 
+lm_head.dense.weight        | UNEXPECTED | 
+classifier.out_proj.bias    | MISSING    | 
+classifier.dense.weight     | MISSING    | 
+classifier.dense.bias       | MISSING    | 
+classifier.out_proj.weight  | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+    epoch=1  train_loss=0.5950
+    epoch=2  train_loss=0.4636
+    epoch=3  train_loss=0.3441
+    epoch=4  train_loss=0.2291
+    epoch=5  train_loss=0.1498
+  macro-F1 0.858  acc 0.858  FP 14  FN 11  (217.8s)
+[refit] seed=44  lr=5e-05  epochs=5  บนชุดฝึกทั้งหมด 1472 ทวีต
+Loading weights:   0%|          | 0/197 [00:00<?, ?it/s]Loading weights: 100%|██████████| 197/197 [00:00<00:00, 9228.13it/s]
+[transformers] [1mCamembertForSequenceClassification LOAD REPORT[0m from: airesearch/wangchanberta-base-att-spm-uncased
+Key                         | Status     | 
+----------------------------+------------+-
+lm_head.layer_norm.weight   | UNEXPECTED | 
+roberta.pooler.dense.bias   | UNEXPECTED | 
+roberta.pooler.dense.weight | UNEXPECTED | 
+lm_head.bias                | UNEXPECTED | 
+lm_head.layer_norm.bias     | UNEXPECTED | 
+lm_head.dense.bias          | UNEXPECTED | 
+lm_head.dense.weight        | UNEXPECTED | 
+classifier.out_proj.bias    | MISSING    | 
+classifier.dense.weight     | MISSING    | 
+classifier.dense.bias       | MISSING    | 
+classifier.out_proj.weight  | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+    epoch=1  train_loss=0.5837
+    epoch=2  train_loss=0.4012
+    epoch=3  train_loss=0.2138
+    epoch=4  train_loss=0.1165
+    epoch=5  train_loss=0.0600
+  macro-F1 0.830  acc 0.830  FP 15  FN 15  (219.3s)
+[refit] seed=45  lr=5e-05  epochs=5  บนชุดฝึกทั้งหมด 1472 ทวีต
+Loading weights:   0%|          | 0/197 [00:00<?, ?it/s]Loading weights: 100%|██████████| 197/197 [00:00<00:00, 7508.55it/s]
+[transformers] [1mCamembertForSequenceClassification LOAD REPORT[0m from: airesearch/wangchanberta-base-att-spm-uncased
+Key                         | Status     | 
+----------------------------+------------+-
+lm_head.layer_norm.weight   | UNEXPECTED | 
+roberta.pooler.dense.bias   | UNEXPECTED | 
+roberta.pooler.dense.weight | UNEXPECTED | 
+lm_head.bias                | UNEXPECTED | 
+lm_head.layer_norm.bias     | UNEXPECTED | 
+lm_head.dense.bias          | UNEXPECTED | 
+lm_head.dense.weight        | UNEXPECTED | 
+classifier.out_proj.bias    | MISSING    | 
+classifier.dense.weight     | MISSING    | 
+classifier.dense.bias       | MISSING    | 
+classifier.out_proj.weight  | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+    epoch=1  train_loss=0.6261
+    epoch=2  train_loss=0.5220
+    epoch=3  train_loss=0.4198
+    epoch=4  train_loss=0.2993
+    epoch=5  train_loss=0.2202
+  macro-F1 0.835  acc 0.835  FP 19  FN 10  (218.8s)
+[refit] seed=46  lr=5e-05  epochs=5  บนชุดฝึกทั้งหมด 1472 ทวีต
+Loading weights:   0%|          | 0/197 [00:00<?, ?it/s]Loading weights: 100%|██████████| 197/197 [00:00<00:00, 12189.33it/s]
+[transformers] [1mCamembertForSequenceClassification LOAD REPORT[0m from: airesearch/wangchanberta-base-att-spm-uncased
+Key                         | Status     | 
+----------------------------+------------+-
+lm_head.layer_norm.weight   | UNEXPECTED | 
+roberta.pooler.dense.bias   | UNEXPECTED | 
+roberta.pooler.dense.weight | UNEXPECTED | 
+lm_head.bias                | UNEXPECTED | 
+lm_head.layer_norm.bias     | UNEXPECTED | 
+lm_head.dense.bias          | UNEXPECTED | 
+lm_head.dense.weight        | UNEXPECTED | 
+classifier.out_proj.bias    | MISSING    | 
+classifier.dense.weight     | MISSING    | 
+classifier.dense.bias       | MISSING    | 
+classifier.out_proj.weight  | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+    epoch=1  train_loss=0.6055
+    epoch=2  train_loss=0.5688
+    epoch=3  train_loss=0.4291
+    epoch=4  train_loss=0.3029
+    epoch=5  train_loss=0.1885
+  macro-F1 0.846  acc 0.847  FP 17  FN 10  (216.6s)
+
+=== M3 บนชุดทดสอบ 176 ทวีต (seed 42) ===
+confusion matrix: TN=73 FP=15 FN=9 TP=79  (ทายว่า toxic 53%, ความจริง 50%)
+  precision(toxic)  0.840
+  recall(toxic)     0.898
+  F1(toxic)         0.868
+  accuracy          0.864
+  macro-F1          0.863
+
+=== mean ± SD จาก 5 seeds ===
+  precision(toxic)  0.828 ± 0.017
+  recall(toxic)     0.875 ± 0.027
+  F1(toxic)         0.851 ± 0.015
+  accuracy          0.847 ± 0.014
+  macro-F1          0.846 ± 0.015
+  FP                16.0 ± 2.0
+
+บันทึกผลใน /Users/bew/Desktop/CS374(NLP)_Project/thai-toxic-detection/results/m3/  -> ต่อด้วย: python compare.py --a results/b1 --b results/m3
